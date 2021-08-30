@@ -14,7 +14,12 @@ app.on('ready', () => {
   mainWindow = new BrowserWindow({
     width: 670,
     height: 550,
-    useContentSize: true
+    useContentSize: true,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+      enableRemoteModule: true
+    }
   });
   mainWindow.loadURL(`file://${__dirname}/index.html`);
   mainWindow.on('closed', () => { mainWindow = null; });

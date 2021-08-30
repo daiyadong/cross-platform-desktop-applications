@@ -14,7 +14,15 @@ let appPath = app.getAppPath();
 if (process.env.NODE_ENV === 'test') appPath = process.cwd();
 
 app.on('ready', () => {
-  mainWindow = new BrowserWindow();
+  mainWindow = new BrowserWindow(
+      {
+        webPreferences: {
+          nodeIntegration: true,
+          contextIsolation: false,
+          enableRemoteModule: true
+        }
+      }
+  );
   mainWindow.loadURL(`file://${appPath}/index.html`);
   mainWindow.on('closed', () => { mainWindow = null; });
 });

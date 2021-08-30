@@ -30,7 +30,12 @@ app.on('ready', () => {
   mainWindow = new BrowserWindow({
     width: 370,
     height: 90,
-    useContentSize: true
+    useContentSize: true,
+      webPreferences: {
+          nodeIntegration: true,
+          contextIsolation: false,
+          enableRemoteModule: true
+      }
   });
   mainWindow.loadURL(`file://${__dirname}/index.html`);
   mainWindow.on('closed', () => { mainWindow = null; });

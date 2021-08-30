@@ -42,7 +42,13 @@ app.on('ready', () => {
   appIcon.setToolTip('Notes app');
   appIcon.setContextMenu(contextMenu);
 
-  mainWindow = new BrowserWindow({ width: 800, height: 600 });
+  mainWindow = new BrowserWindow({ width: 800, height: 600,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+      enableRemoteModule: true
+    }
+  });
   mainWindow.loadURL(`file://${__dirname}/index.html`);
   mainWindow.webContents.on('dom-ready', () => {
     displayNote(notes[0]);

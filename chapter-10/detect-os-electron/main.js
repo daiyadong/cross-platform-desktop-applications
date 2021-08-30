@@ -10,7 +10,15 @@ app.on('window-all-closed', function () {
 });
 
 app.on('ready', function () {
-  mainWindow = new BrowserWindow();
+  mainWindow = new BrowserWindow(
+      {
+        webPreferences: {
+          nodeIntegration: true,
+          contextIsolation: false,
+          enableRemoteModule: true
+        }
+      }
+  );
   mainWindow.loadURL('file://' + __dirname + '/index.html');
   mainWindow.on('closed', function () { mainWindow = null; });
 	//mainWindow.webContents.openDevTools();
