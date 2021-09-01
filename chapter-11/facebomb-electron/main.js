@@ -16,7 +16,12 @@ app.on('ready', () => {
     width: 800,
     height: 600,
     resizable: false,
-    fullscreen: false
+    fullscreen: false,
+    webPreferences: {
+      nodeIntegration: true,
+          contextIsolation: false,
+          enableRemoteModule: true
+  }
   });
   mainWindow.loadURL(`file://${__dirname}/index.html`);
   mainWindow.on('closed', () => { mainWindow = null; });

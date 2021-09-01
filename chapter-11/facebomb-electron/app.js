@@ -22,7 +22,7 @@ function initialize () {
   };
 
   window.navigator.webkitGetUserMedia({video: true}, (localMediaStream) => {
-    video.src = window.URL.createObjectURL(localMediaStream);
+      video.src = window.URL.createObjectURL(localMediaStream);
   }, errorCallback);
 }
 
